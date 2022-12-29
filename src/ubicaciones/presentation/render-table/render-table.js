@@ -2,6 +2,7 @@
 
 //import { Ubicacion } from '../../models/ubicacion';
 import ubicacionesStore from '../../store/ubicaciones-store';
+import { showModal } from '../render-modal/render-modal';
 import './render-table.css';
 
 let table;
@@ -28,20 +29,21 @@ const createTable = () => {
 }
 
 const tableSelectListener = (event) => {
-    const element = event.target.closest('.select-user');
+    const element = event.target.closest('.select-ubicacion');
     if (!element) return;
     const id = element.getAttribute('data-id');
+    //console.log(id);
     showModal(id);
 }
 
 const tableDeleteListener = async (event) => {
-    const element = event.target.closest('.delete-user');
+    const element = event.target.closest('.delete-ubicacion');
     if (!element) return;
     const id = element.getAttribute('data-id');
     try {
         await deleteUserById(id);
         await ubicacionesStore.reloadPage();
-        document.querySelector('#current-page').innerText = usersStore.getCurrentPage();
+        document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
         renderTable();
 
     } catch (error) {
@@ -79,9 +81,9 @@ export const renderTable = (element) => {
             <td>${ubicacion.tiempo_nivel_c}</td>
             <td>${ubicacion.tiempo_nivel_d}</td>
             <td>
-                <a href="#" class="select-user" data-id="${ubicacion.id}">Select</a>
+                <a href="#" class="select-ubicacion" data-id="${ubicacion.id}">Select</a>
                 |
-                <a href="#" class="delete-user" data-id="${ubicacion.id}">Delete</a>
+                <a href="#" class="delete-ubicacion" data-id="${ubicacion.id}">Delete</a>
             </td>
         </tr>
         `;

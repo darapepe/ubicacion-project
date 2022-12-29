@@ -4,22 +4,15 @@ import { loadUbicacionesByPage } from "../use-cases/load-ubicaciones-by-pages";
 
 const state = {
     currentPage: 0,
-    ubicaciones: {},
+    ubicaciones: [],
 }
 
 
 const loadNextPage = async () => {
-    try {
-        const ubicaciones = await loadUbicacionesByPage(state.currentPage + 1);
-        state.currentPage += 1;
-        state.ubicaciones = ubicaciones;
-    } catch (error) {
-        state.ubicaciones = {};
-        return error;
-    }
-    // if (ubicaciones.length === 0) return;
-    // state.currentPage += 1;
-    // state.ubicaciones = ubicaciones;
+    const ubicaciones = await loadUbicacionesByPage(state.currentPage + 1);
+    if (ubicaciones?.length === 0) return;
+    state.currentPage += 1;
+    state.ubicaciones = ubicaciones;
 }
 
 const loadPreviusPage = async () => {

@@ -1,3 +1,4 @@
+import { renderModal } from "../presentation/render-modal/render-modal";
 import { renderTable } from "../presentation/render-table/render-table";
 import ubicacionesStore from "../store/ubicaciones-store";
 import '/style.css';
@@ -21,11 +22,11 @@ export const UbicacionesApp = async (element) => {
     // renderAddButton(element, () => { console.log('desde el padre'); });
     //renderAddButton(element);
 
-    // renderModal(element, async (userLike) => {
-    //     const user = await saveUser(userLike);
-    //     usersStore.onUserChanged(user);
-    //     renderTable();
-    // });
+    renderModal(element, async (ubicacionLike) => {
+        const ubicacion = await saveUbicacion(ubicacionLike);
+        ubicacionesStore.onUbicacionChanged(ubicacion);
+        renderTable();
+    });
 
     //console.log(usersStore.getUsers());
 }

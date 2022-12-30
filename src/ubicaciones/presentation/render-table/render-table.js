@@ -5,7 +5,6 @@ import ubicacionesStore from '../../store/ubicaciones-store';
 import { deleteUbicacionById } from '../../use-cases/delete-ubicacion-by-id';
 import { showModal } from '../render-modal/render-modal';
 import './render-table.css';
-import Swal from 'sweetalert2';
 
 let table;
 

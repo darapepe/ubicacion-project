@@ -1,3 +1,4 @@
+import { renderLogin } from "../presentation/render-login/render-login";
 import { renderModal } from "../presentation/render-modal/render-modal";
 import { renderTable } from "../presentation/render-table/render-table";
 import ubicacionesStore from "../store/ubicaciones-store";
@@ -12,21 +13,28 @@ export const UbicacionesApp = async (element) => {
     <div class="shadow"></div>
     <div class="shadow"></div>
 </div>`;
-    await ubicacionesStore.loadNextPage();
-    element.innerHTML = '';
 
-    renderTable(element);
+    const token = localStorage.getItem("token");
+    if (!token || token == "NO") {
+        element.innerHTML = '';
+        renderLogin(element);
+    } else {
+        await ubicacionesStore.loadNextPage();
+        element.innerHTML = '';
 
-    //renderButtons(element);
+        renderTable(element);
 
-    // renderAddButton(element, () => { console.log('desde el padre'); });
-    //renderAddButton(element);
+        //renderButtons(element);
 
-    renderModal(element, async (ubicacionLike) => {
-        const ubicacion = await saveUbicacion(ubicacionLike);
-        ubicacionesStore.onUbicacionChanged(ubicacion);
-        renderTable();
-    });
+        // renderAddButton(element, () => { console.log('desde el padre'); });
+        //renderAddButton(element);
 
-    //console.log(usersStore.getUsers());
+        renderModal(element, async (ubicacionLike) => {
+            const ubicacion = await saveUbicacion(ubicacionLike);
+            ubicacionesStore.onUbicacionChanged(ubicacion);
+            renderTable();
+        });
+
+        //console.log(usersStore.getUsers());
+    }
 }

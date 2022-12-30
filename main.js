@@ -5,8 +5,8 @@ import { UbicacionesApp } from './src/ubicaciones/use-cases/ubicaciones-app';
 
 document.querySelector('#app').innerHTML = `
   <div>    
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${metropolisLogo}" class="logo vanilla" alt="JavaScript logo" />
+    <a href="https://www.metropoliscenter.com.co" target="_blank">
+      <img src="${metropolisLogo}" class="logo metropolis" alt="Metropolis logo" />
     </a>
     <h1>Gestion Tiempos Ubicaciones Bodega Metropolis 84</h1>
     <div class="card">

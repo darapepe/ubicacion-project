@@ -5,6 +5,7 @@ import ubicacionesStore from '../../store/ubicaciones-store';
 import { deleteUbicacionById } from '../../use-cases/delete-ubicacion-by-id';
 import { showModal } from '../render-modal/render-modal';
 import './render-table.css';
+import Swal from 'sweetalert2';
 
 let table;
 
@@ -43,8 +44,8 @@ const tableDeleteListener = async (event) => {
     const id = element.getAttribute('data-id');
     try {
         await deleteUbicacionById(id);
-        await ubicacionesStore.reloadPage();
-        document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
+        await ubicacionesStore.reloadPage();        
+        //document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
         renderTable();
 
     } catch (error) {

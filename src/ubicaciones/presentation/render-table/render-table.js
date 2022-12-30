@@ -2,6 +2,7 @@
 
 //import { Ubicacion } from '../../models/ubicacion';
 import ubicacionesStore from '../../store/ubicaciones-store';
+import { deleteUbicacionById } from '../../use-cases/delete-ubicacion-by-id';
 import { showModal } from '../render-modal/render-modal';
 import './render-table.css';
 
@@ -41,7 +42,7 @@ const tableDeleteListener = async (event) => {
     if (!element) return;
     const id = element.getAttribute('data-id');
     try {
-        await deleteUserById(id);
+        await deleteUbicacionById(id);
         await ubicacionesStore.reloadPage();
         document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
         renderTable();

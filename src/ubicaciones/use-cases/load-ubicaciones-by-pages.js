@@ -14,7 +14,9 @@ function alertClient(message) {
 export const loadUbicacionesByPage = async (page = 1) => {
     try {
         const url = `${import.meta.env.VITE_BASE_URL}/wsf/api/Ubicacion?_page=${page}`;
-        const res = await fetch(url)
+        //console.log(url);
+        const res = await fetch(url);
+
         const data = await res.json(r => {
             const dataRes = new Ubicacion();
             dataRes.id = r.id;
@@ -26,7 +28,8 @@ export const loadUbicacionesByPage = async (page = 1) => {
             dataRes.tiempo_nivel_c = r.tiempo_nivel_c;
             dataRes.tiempo_nivel_d = r.tiempo_nivel_d;
         });
-
+        //const data = await res.json();
+        //console.log('Datos: ',data);
         const ubicaciones = data;
         return ubicaciones.sort((a, b) => {
             let retval = 0;
@@ -36,8 +39,7 @@ export const loadUbicacionesByPage = async (page = 1) => {
             return retval;
         });
     } catch (error) {
-        alertClient('Se presento error en la comunicacion.');
+        alertClient(error);
         return [];
-    }    
-    //console.log(data);
+    }
 }

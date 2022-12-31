@@ -25,10 +25,11 @@ export const deleteUbicacionById = async (id) => {
                 const url = `${import.meta.env.VITE_BASE_URL}/wsf/api/Ubicacion/${id}`;
                 const res = await fetch(url, {
                     method: 'DELETE',
+                    headers: { 'token': `${import.meta.env.VITE_TOKEN}`}
                 });
 
                 const deleteResult = await res.json();
-                console.log({ deleteResult });
+                //console.log({ deleteResult });
                 return true;
             } catch (error) {
                 //console.log(error);

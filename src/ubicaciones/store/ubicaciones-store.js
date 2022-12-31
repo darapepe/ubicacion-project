@@ -10,9 +10,9 @@ const state = {
 
 const loadNextPage = async () => {
     const ubicaciones = await loadUbicacionesByPage(state.currentPage + 1);
-    if (ubicaciones?.length === 0) return;
+    if (ubicaciones.length === 0) return;
     state.currentPage += 1;
-    state.ubicaciones = ubicaciones;
+    state.ubicaciones = ubicaciones;    
 }
 
 const loadPreviusPage = async () => {
@@ -34,7 +34,7 @@ const onUbicacionChanged = (updateUbicacion) => {
         }
         return ubicacion;
     });
-
+    
     if (state.ubicaciones.length < 10 && !wasFound) {
         state.ubicaciones.push(updateUbicacion);
     }

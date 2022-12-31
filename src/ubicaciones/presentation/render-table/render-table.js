@@ -21,6 +21,7 @@ const createTable = () => {
         <th>Tiempo Nivel B</th>
         <th>Tiempo Nivel C</th>
         <th>Tiempo Nivel D</th>
+        <th>Opciones</th>
     </tr>
     `;
 
@@ -43,12 +44,12 @@ const tableDeleteListener = async (event) => {
     const id = element.getAttribute('data-id');
     try {
         await deleteUbicacionById(id);
-        await ubicacionesStore.reloadPage();        
-        //document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
+        await ubicacionesStore.reloadPage();
+        document.querySelector('#current-page').innerText = ubicacionesStore.getCurrentPage();
         renderTable();
 
     } catch (error) {
-        console.log(error);
+        console.log('Error: ', error);
         alert('No se pudo eliminar');
     }
 }

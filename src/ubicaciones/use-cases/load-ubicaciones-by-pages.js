@@ -12,8 +12,9 @@ function alertClient(message) {
 }
 
 export const loadUbicacionesByPage = async (page = 1) => {
+    //console.log(page);
     try {
-        const url = `${import.meta.env.VITE_BASE_URL}/wsf/api/Ubicacion?_page=${page}`;
+        const url = `${import.meta.env.VITE_BASE_URL}/wsf/api/Ubicacion?pageNumber=${page}&pageSize=10`;
         //console.log(url);
         const res = await fetch(url);
 
@@ -39,7 +40,7 @@ export const loadUbicacionesByPage = async (page = 1) => {
             return retval;
         });
     } catch (error) {
-        alertClient(error);
+        alertClient('Se presentaron errores en la comunicacion.');
         return [];
     }
 }

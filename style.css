@@ -61,6 +61,13 @@ h1 {
 }
 
 .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
   padding: 2em;
 }
 
@@ -81,7 +88,8 @@ button {
 }
 
 button:hover {
-  background-color: #e7e7e7; color: black;
+  background-color: #e7e7e7;
+  color: black;
   border-color: #646cff;
 }
 

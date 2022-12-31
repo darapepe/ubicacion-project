@@ -4,7 +4,7 @@ export const getUbicacionById = async (id) => {
     //const url = `${import.meta.env.VITE_BASE_URL}/users/${id}`;
     const url = `${import.meta.env.VITE_BASE_URL}/wsf/api/Ubicacion/${id}`;
     const res = await fetch(url);
-    console.log(url);
+    //console.log(url);
     const data = await res.json(r => {
         const dataRes = new Ubicacion();
         dataRes.id = r.id;
@@ -18,7 +18,7 @@ export const getUbicacionById = async (id) => {
     });
 
     const ubicaciones = data;
-    console.log(ubicaciones);
+    //console.log(ubicaciones);
     return ubicaciones;
     
 }

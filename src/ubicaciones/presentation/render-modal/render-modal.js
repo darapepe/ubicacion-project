@@ -3,11 +3,11 @@ import './render-modal.css';
 import { getUbicacionById } from '../../use-cases/get-ubicacion-by-id';
 
 let modal, form;
-let loadedUbicacion = [];
+let loadedUbicacion = {};
 
 export const showModal = async (id) => {
     modal?.classList.remove('hide-modal');
-    loadedUbicacion = [];
+    loadedUbicacion = {};
 
     if (!id) return;
 
@@ -24,11 +24,11 @@ export const hideModal = () => {
 const setFormValues = (ubicacion) => {
     form.querySelector('[name="bodega"]').value = ubicacion.bodega;
     form.querySelector('[name="ubicacion"]').value = ubicacion.ubicacion;
-    form.querySelector('[name="tiempouz"]').value = ubicacion.tiempo_uz;
-    form.querySelector('[name="tiemponivela"]').value = ubicacion.tiempo_nivel_a;
-    form.querySelector('[name="tiemponivelb"]').value = ubicacion.tiempo_nivel_b;
-    form.querySelector('[name="tiemponivelc"]').value = ubicacion.tiempo_nivel_c;
-    form.querySelector('[name="tiemponiveld"]').value = ubicacion.tiempo_nivel_d;
+    form.querySelector('[name="tiempo_uz"]').value = ubicacion.tiempo_uz;
+    form.querySelector('[name="tiempo_nivel_a"]').value = ubicacion.tiempo_nivel_a;
+    form.querySelector('[name="tiempo_nivel_b"]').value = ubicacion.tiempo_nivel_b;
+    form.querySelector('[name="tiempo_nivel_c"]').value = ubicacion.tiempo_nivel_c;
+    form.querySelector('[name="tiempo_nivel_d"]').value = ubicacion.tiempo_nivel_d;
     loadedUbicacion = ubicacion;
 }
 

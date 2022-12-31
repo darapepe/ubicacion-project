@@ -5,7 +5,7 @@ import { renderModal } from "../presentation/render-modal/render-modal";
 import { renderTable } from "../presentation/render-table/render-table";
 import ubicacionesStore from "../store/ubicaciones-store";
 import { saveUbicacion } from "./save-ubicacion";
-//import '/style.css';
+import '/style.css';
 
 export const UbicacionesApp = async (element) => {
     element.innerHTML = `<div class="wrapper">
